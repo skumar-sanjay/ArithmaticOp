@@ -1,0 +1,94 @@
+ <!--create a class numbers and make a function to read any two numbers from user and make another function to print result.This class has total a property -num1,num2,result 
+now make another class with name "Arithmatic and inherit numbers class inside Arithmatic class. now make 4 functions to perform arithmatic operations(+,-,*,/)" and assign result to result variable.
+after closing of both classes.make a function to test functions of aritmatic class-->
+
+<html>
+    <head>
+<script>
+  class Numbers
+  {
+    constructor()
+    {
+        this.num1=0;
+        this.num2=0;
+        this.result=0;
+    }
+    setNumbers(x,y)
+    {
+        this.num1=x;
+        this.num2=y;
+    }
+    getResult()
+    {
+        return this.result;
+    }
+}
+    class Arithmatic extends Numbers 
+       {
+        constructor()
+        {
+            super();
+        }
+        add()
+        {
+            this.result=parseInt(this.num1)+parseInt(this.num2);
+            return this.result;
+        }
+        sub()
+        {
+            this.result=parseInt(this.num1)-parseInt(this.num2);
+            return this.result;
+        }
+        mul()
+        {
+            this.result=parseInt(this.num1)*parseInt(this.num2);
+            return this.result;
+        }
+        div()
+        {
+            this.result=parseInt(this.num1)/parseInt(this.num2);
+            return this.result;
+        }
+       }
+        function calculate(txt1,txt2,ddl,dv)
+        {
+            var ar=new Arithmatic();
+            ar.setNumbers(txt1.value,txt2.value);
+            var res;
+            switch(ddl.value)
+            {
+               case '+':
+                    res=ar.add();
+                    break;
+               case '-':
+                    res=ar.sub();
+                    break;
+               case '*':
+                    res=ar.mul();
+                    break;
+               case '/':
+                    res=ar.div();
+                    break; 
+               default:
+                   res=0;
+                   alert("Invalid operation: ");
+            }
+            dv.innerText="Result is: "+res;
+        }
+</script>
+    </head>
+
+    <body>
+<input type="number" placeholder="enter first number" id="txtnum1"/><br><br>
+<input type="number" placeholder="enter second number" id="txtnum2"/><br><br>
+<select id="ddlop">
+    <option value="">select operation</option>
+    <option>+</option>
+    <option>-</option>
+    <option>*</option>
+    <option>/</option>
+</select><br><br>
+<input type="button" value="get Result" onclick="calculate(txtnum1,txtnum2,ddlop,mydv)"/><br><br>
+<div id="mydv"></div>
+    </body>
+</html>
